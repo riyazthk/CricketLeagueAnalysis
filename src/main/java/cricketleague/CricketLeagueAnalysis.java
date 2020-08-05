@@ -14,6 +14,8 @@ import java.util.stream.StreamSupport;
 
 public class CricketLeagueAnalysis {
     List<IplRunAnalysesData> analyseList = new ArrayList<>();
+    boolean flag = true;
+
 
     public int loadCricketAnalysisData(String IplFilePath) throws CensusAnalyserException {
         CSVBuildFactory csvBuilder = new CSVBuildFactory();
@@ -37,7 +39,7 @@ public class CricketLeagueAnalysis {
         return analyseList.size();
     }
 
-        private void sort(Comparator censusComparator) {
+    private void sort(Comparator censusComparator) {
         for (int firstIndex = 0; firstIndex < analyseList.size() - 1; firstIndex++) {
             for (int secondIndex = 0; secondIndex < analyseList.size() - firstIndex - 1; secondIndex++) {
                 IplRunAnalysesData censusCSV1 = analyseList.get(secondIndex);
@@ -65,6 +67,22 @@ public class CricketLeagueAnalysis {
             throw new CensusAnalyserException("No Census Data", CensusAnalyserException.NO_CENSUS_DATA);
         }
         Comparator<IplRunAnalysesData> iplMostRunsComparator = Comparator.comparing(census -> census.strikeRate);
+        this.sort(iplMostRunsComparator);
+        String sortedCensusJson = new Gson().toJson(analyseList);
+        return sortedCensusJson;
+    }
+
+    public String getSixAndFourWiseSorted() throws CensusAnalyserException {
+        Comparator<IplRunAnalysesData> iplMostRunsComparator;
+        if (analyseList.size() == 0 || analyseList == null) {
+            throw new CensusAnalyserException("No Census Data", CensusAnalyserException.NO_CENSUS_DATA);
+        }
+        if (flag == true) {
+            iplMostRunsComparator = Comparator.comparing(census -> census.six);
+            flag = false;
+        } else {
+            iplMostRunsComparator = Comparator.comparing(census -> census.four);
+        }
         this.sort(iplMostRunsComparator);
         String sortedCensusJson = new Gson().toJson(analyseList);
         return sortedCensusJson;
