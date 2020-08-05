@@ -12,20 +12,18 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-public class CricketLeagueAnalysis<E> {
-    HashMap<String, AnalyseDAO> analyseMap = new HashMap<>();
+public class CricketLeagueAnalysis {
+    List<IplRunAnalysesData> analyseList = new ArrayList<>();
 
     public int loadCricketAnalysisData(String IplFilePath) throws CensusAnalyserException {
         CSVBuildFactory csvBuilder = new CSVBuildFactory();
         try (Reader reader = Files.newBufferedReader(Paths.get(IplFilePath));) {
-            Iterator<E> censusIterator = csvBuilder.getCSVFileIterator(reader, IplRunAnalysesData.class);
-            Iterable<E> csvIterable = () -> censusIterator;
+            Iterator<IplRunAnalysesData> censusIterator = csvBuilder.getCSVFileIterator(reader, IplRunAnalysesData.class);
+            Iterable<IplRunAnalysesData> csvIterable = () -> censusIterator;
             if (IplRunAnalysesData.class.getName().equals("cricketleague.IplRunAnalysesData")) {
                 StreamSupport.stream(csvIterable.spliterator(), false)
-                        .map(IplRunAnalysesData.class::cast)
-                        .filter(iplRunAnalysesData ->iplRunAnalysesData.battingAvg>0.00)
-                        .forEach(runAnalysis -> analyseMap.put( runAnalysis.player, new AnalyseDAO(runAnalysis)));
-                return analyseMap.size();
+                        .forEach(runAnalysis -> analyseList.add((IplRunAnalysesData) runAnalysis));
+                return analyseList.size();
             }
         } catch (CSVBuilderException e) {
             throw new CensusAnalyserException(e.getMessage(),
@@ -36,35 +34,40 @@ public class CricketLeagueAnalysis<E> {
                     CensusAnalyserException.ExceptionType.
                             CENSUS_FILE_PROBLEM);
         }
-        return analyseMap.size();
+        return analyseList.size();
     }
-    private void sort(List<AnalyseDAO> analyseDAO, Comparator<AnalyseDAO> censusComparator) {
-        for (int firstIndex = 0; firstIndex < analyseDAO.size() - 1; firstIndex++) {
-            for (int secondIndex = 0; secondIndex < analyseDAO.size() - firstIndex - 1; secondIndex++) {
-                AnalyseDAO censusCSV1 = analyseDAO.get(secondIndex);
-                AnalyseDAO censusCSV2 = analyseDAO.get(secondIndex + 1);
+
+        private void sort(Comparator censusComparator) {
+        for (int firstIndex = 0; firstIndex < analyseList.size() - 1; firstIndex++) {
+            for (int secondIndex = 0; secondIndex < analyseList.size() - firstIndex - 1; secondIndex++) {
+                IplRunAnalysesData censusCSV1 = analyseList.get(secondIndex);
+                IplRunAnalysesData censusCSV2 = analyseList.get(secondIndex + 1);
                 if (censusComparator.compare(censusCSV1, censusCSV2) < 0) {
-                    analyseDAO.set(secondIndex, censusCSV2);
-                    analyseDAO.set(secondIndex + 1, censusCSV1);
+                    analyseList.set(secondIndex, censusCSV2);
+                    analyseList.set(secondIndex + 1, censusCSV1);
                 }
             }
         }
     }
 
-    public String givenTopBattingAverageWiseSortedCodeData() throws CensusAnalyserException, IOException {
-        if (analyseMap == null || analyseMap.size() == 0) {
+    public String getAverageWiseSorted() throws CensusAnalyserException {
+        if (analyseList.size() == 0 || analyseList == null) {
             throw new CensusAnalyserException("No Census Data", CensusAnalyserException.NO_CENSUS_DATA);
         }
-        Comparator<AnalyseDAO> censusComparator = Comparator.comparing(census -> census.average);
-        List<AnalyseDAO> censusDAOS = analyseMap.values().stream().collect(Collectors.toList());
-       // censusDAOS.sort((AnalyseDAO a1,AnalyseDAO a2)->a1.getAverage().compareTo(a2.getAverage()));
-        this.sort(censusDAOS, censusComparator);
-        String sortedAreaCensusJson = new Gson().toJson(censusDAOS);
-        FileWriter fileWriter = new FileWriter("TopBattingAverages.json");
-        fileWriter.write(sortedAreaCensusJson);
-        fileWriter.close();
-        return sortedAreaCensusJson;
+        Comparator<IplRunAnalysesData> iplMostRunsComparator = Comparator.comparing(census -> census.battingAvg);
+        this.sort(iplMostRunsComparator);
+        String sortedCensusJson = new Gson().toJson(analyseList);
+        return sortedCensusJson;
+    }
 
+    public String getStrikeRateWiseSorted() throws CensusAnalyserException {
+        if (analyseList.size() == 0 || analyseList == null) {
+            throw new CensusAnalyserException("No Census Data", CensusAnalyserException.NO_CENSUS_DATA);
+        }
+        Comparator<IplRunAnalysesData> iplMostRunsComparator = Comparator.comparing(census -> census.strikeRate);
+        this.sort(iplMostRunsComparator);
+        String sortedCensusJson = new Gson().toJson(analyseList);
+        return sortedCensusJson;
     }
 }
 
