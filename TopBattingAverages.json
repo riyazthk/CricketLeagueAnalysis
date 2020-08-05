@@ -1,0 +1,702 @@
+[
+  {
+    "strikeRate": "105.88",
+    "average": "9",
+    "player": "Ben Cutting",
+    "four": 1,
+    "six": 1
+  },
+  {
+    "strikeRate": "90",
+    "average": "9",
+    "player": "Shakib Al Hasan",
+    "four": 0,
+    "six": 0
+  },
+  {
+    "strikeRate": "134.62",
+    "average": "83.2",
+    "player": "MS Dhoni",
+    "four": 22,
+    "six": 23
+  },
+  {
+    "strikeRate": "150",
+    "average": "8.4",
+    "player": "Ravichandran Ashwin",
+    "four": 3,
+    "six": 3
+  },
+  {
+    "strikeRate": "200",
+    "average": "7",
+    "player": "Shardul Thakur",
+    "four": 1,
+    "six": 1
+  },
+  {
+    "strikeRate": "143.86",
+    "average": "69.2",
+    "player": "David Warner ",
+    "four": 57,
+    "six": 21
+  },
+  {
+    "strikeRate": "147.82",
+    "average": "6.8",
+    "player": "Rashid Khan",
+    "four": 2,
+    "six": 2
+  },
+  {
+    "strikeRate": "150",
+    "average": "6",
+    "player": "Kuldeep Yadav",
+    "four": 1,
+    "six": 0
+  },
+  {
+    "strikeRate": "109.09",
+    "average": "6",
+    "player": "Rahul Chahar",
+    "four": 2,
+    "six": 0
+  },
+  {
+    "strikeRate": "94.73",
+    "average": "6",
+    "player": "Krishnappa Gowtham",
+    "four": 1,
+    "six": 1
+  },
+  {
+    "strikeRate": "204.81",
+    "average": "56.66",
+    "player": "Andre Russell",
+    "four": 31,
+    "six": 52
+  },
+  {
+    "strikeRate": "157.24",
+    "average": "55.62",
+    "player": "Jonny Bairstow",
+    "four": 48,
+    "six": 18
+  },
+  {
+    "strikeRate": "135.38",
+    "average": "53.9",
+    "player": "KL Rahul",
+    "four": 49,
+    "six": 25
+  },
+  {
+    "strikeRate": "135.25",
+    "average": "52.75",
+    "player": "Marcus Stoinis",
+    "four": 14,
+    "six": 10
+  },
+  {
+    "strikeRate": "110",
+    "average": "5.5",
+    "player": "Carlos Brathwaite",
+    "four": 1,
+    "six": 0
+  },
+  {
+    "strikeRate": "86.48",
+    "average": "5.33",
+    "player": "Chris Morris",
+    "four": 1,
+    "six": 2
+  },
+  {
+    "strikeRate": "125.87",
+    "average": "45",
+    "player": "Sarfaraz Khan",
+    "four": 19,
+    "six": 4
+  },
+  {
+    "strikeRate": "191.42",
+    "average": "44.66",
+    "player": "Hardik Pandya",
+    "four": 28,
+    "six": 29
+  },
+  {
+    "strikeRate": "154",
+    "average": "44.2",
+    "player": "AB de Villiers",
+    "four": 31,
+    "six": 26
+  },
+  {
+    "strikeRate": "130.79",
+    "average": "43",
+    "player": "Manish Pandey",
+    "four": 34,
+    "six": 6
+  },
+  {
+    "strikeRate": "137.5",
+    "average": "41.25",
+    "player": "Mandeep Singh",
+    "four": 10,
+    "six": 4
+  },
+  {
+    "strikeRate": "153.6",
+    "average": "40.83",
+    "player": "Chris Gayle",
+    "four": 45,
+    "six": 34
+  },
+  {
+    "strikeRate": "93.33",
+    "average": "4.66",
+    "player": "Kagiso Rabada",
+    "four": 0,
+    "six": 1
+  },
+  {
+    "strikeRate": "63.15",
+    "average": "4",
+    "player": "Bhuvneshwar Kumar",
+    "four": 1,
+    "six": 0
+  },
+  {
+    "strikeRate": "116",
+    "average": "39.87",
+    "player": "Steve Smith",
+    "four": 30,
+    "six": 4
+  },
+  {
+    "strikeRate": "151.7",
+    "average": "38.87",
+    "player": "Jos Buttler",
+    "four": 38,
+    "six": 14
+  },
+  {
+    "strikeRate": "162.66",
+    "average": "37.53",
+    "player": "Rishabh Pant",
+    "four": 37,
+    "six": 27
+  },
+  {
+    "strikeRate": "123.36",
+    "average": "36",
+    "player": "Faf du Plessis",
+    "four": 36,
+    "six": 15
+  },
+  {
+    "strikeRate": "120.45",
+    "average": "35.33",
+    "player": "Ravindra Jadeja",
+    "four": 7,
+    "six": 4
+  },
+  {
+    "strikeRate": "132.91",
+    "average": "35.26",
+    "player": "Quinton de Kock",
+    "four": 45,
+    "six": 25
+  },
+  {
+    "strikeRate": "156.74",
+    "average": "34.87",
+    "player": "Kieron Pollard",
+    "four": 14,
+    "six": 22
+  },
+  {
+    "strikeRate": "135.67",
+    "average": "34.73",
+    "player": "Shikhar Dhawan",
+    "four": 64,
+    "six": 11
+  },
+  {
+    "strikeRate": "146.38",
+    "average": "34.4",
+    "player": "Nitish Rana",
+    "four": 27,
+    "six": 21
+  },
+  {
+    "strikeRate": "148.69",
+    "average": "34.2",
+    "player": "Sanju Samson",
+    "four": 28,
+    "six": 13
+  },
+  {
+    "strikeRate": "167.5",
+    "average": "33.5",
+    "player": "Jofra Archer",
+    "four": 4,
+    "six": 4
+  },
+  {
+    "strikeRate": "141.46",
+    "average": "33.14",
+    "player": "Virat Kohli",
+    "four": 46,
+    "six": 13
+  },
+  {
+    "strikeRate": "124.36",
+    "average": "32.88",
+    "player": "Shubman Gill",
+    "four": 21,
+    "six": 10
+  },
+  {
+    "strikeRate": "137.89",
+    "average": "32.75",
+    "player": "Ajinkya Rahane",
+    "four": 45,
+    "six": 9
+  },
+  {
+    "strikeRate": "140",
+    "average": "32.66",
+    "player": "Gurkeerat Mann Singh",
+    "four": 11,
+    "six": 2
+  },
+  {
+    "strikeRate": "130.86",
+    "average": "32.61",
+    "player": "Suryakumar Yadav",
+    "four": 45,
+    "six": 10
+  },
+  {
+    "strikeRate": "104.91",
+    "average": "32",
+    "player": "Murali Vijay",
+    "four": 6,
+    "six": 1
+  },
+  {
+    "strikeRate": "126.98",
+    "average": "32",
+    "player": "Riyan Parag",
+    "four": 17,
+    "six": 5
+  },
+  {
+    "strikeRate": "139.13",
+    "average": "32",
+    "player": "Mitchell Santner",
+    "four": 0,
+    "six": 3
+  },
+  {
+    "strikeRate": "146.24",
+    "average": "31.62",
+    "player": "Dinesh Karthik",
+    "four": 22,
+    "six": 14
+  },
+  {
+    "strikeRate": "115.1",
+    "average": "31.33",
+    "player": "Robin Uthappa",
+    "four": 28,
+    "six": 10
+  },
+  {
+    "strikeRate": "139.65",
+    "average": "31.15",
+    "player": "Chris Lynn",
+    "four": 41,
+    "six": 22
+  },
+  {
+    "strikeRate": "119.94",
+    "average": "30.86",
+    "player": "Shreyas Iyer",
+    "four": 41,
+    "six": 14
+  },
+  {
+    "strikeRate": "68.75",
+    "average": "3.66",
+    "player": "Mitchell McClenaghan",
+    "four": 2,
+    "six": 0
+  },
+  {
+    "strikeRate": "75",
+    "average": "3.6",
+    "player": "Keemo Paul",
+    "four": 1,
+    "six": 1
+  },
+  {
+    "strikeRate": "128.57",
+    "average": "28.92",
+    "player": "Rohit Sharma",
+    "four": 52,
+    "six": 10
+  },
+  {
+    "strikeRate": "157",
+    "average": "28",
+    "player": "Nicholas Pooran",
+    "four": 10,
+    "six": 14
+  },
+  {
+    "strikeRate": "165.41",
+    "average": "27.5",
+    "player": "Moeen Ali",
+    "four": 16,
+    "six": 17
+  },
+  {
+    "strikeRate": "152.83",
+    "average": "27",
+    "player": "Martin Guptill",
+    "four": 4,
+    "six": 7
+  },
+  {
+    "strikeRate": "139.17",
+    "average": "26.64",
+    "player": "Parthiv Patel",
+    "four": 48,
+    "six": 10
+  },
+  {
+    "strikeRate": "129.87",
+    "average": "26.62",
+    "player": "David Miller",
+    "four": 19,
+    "six": 7
+  },
+  {
+    "strikeRate": "118.18",
+    "average": "26",
+    "player": "Rahul Tewatia",
+    "four": 2,
+    "six": 1
+  },
+  {
+    "strikeRate": "141.88",
+    "average": "25.53",
+    "player": "Mayank Agarwal",
+    "four": 26,
+    "six": 14
+  },
+  {
+    "strikeRate": "130.66",
+    "average": "24.5",
+    "player": "Yuvraj Singh",
+    "four": 7,
+    "six": 6
+  },
+  {
+    "strikeRate": "121.97",
+    "average": "23.93",
+    "player": "Suresh Raina",
+    "four": 45,
+    "six": 9
+  },
+  {
+    "strikeRate": "172.72",
+    "average": "23.75",
+    "player": "Sam Curran",
+    "four": 13,
+    "six": 3
+  },
+  {
+    "strikeRate": "147.91",
+    "average": "23.66",
+    "player": "Liam Livingstone",
+    "four": 6,
+    "six": 5
+  },
+  {
+    "strikeRate": "93.06",
+    "average": "23.5",
+    "player": "Ambati Rayudu",
+    "four": 20,
+    "six": 7
+  },
+  {
+    "strikeRate": "119.49",
+    "average": "23.5",
+    "player": "Rahul Tripathi",
+    "four": 13,
+    "six": 2
+  },
+  {
+    "strikeRate": "127.56",
+    "average": "23.41",
+    "player": "Shane Watson",
+    "four": 42,
+    "six": 20
+  },
+  {
+    "strikeRate": "175",
+    "average": "23.33",
+    "player": "Stuart Binny",
+    "four": 5,
+    "six": 4
+  },
+  {
+    "strikeRate": "120",
+    "average": "22.28",
+    "player": "Kane Williamson",
+    "four": 12,
+    "six": 5
+  },
+  {
+    "strikeRate": "133.71",
+    "average": "22.06",
+    "player": "Prithvi Shaw",
+    "four": 45,
+    "six": 9
+  },
+  {
+    "strikeRate": "120",
+    "average": "21",
+    "player": "Colin Munro",
+    "four": 9,
+    "six": 4
+  },
+  {
+    "strikeRate": "124.24",
+    "average": "20.5",
+    "player": "Ben Stokes",
+    "four": 8,
+    "six": 4
+  },
+  {
+    "strikeRate": "126.42",
+    "average": "20.33",
+    "player": "Vijay Shankar",
+    "four": 11,
+    "six": 12
+  },
+  {
+    "strikeRate": "75",
+    "average": "2.25",
+    "player": "Pawan Negi",
+    "four": 1,
+    "six": 0
+  },
+  {
+    "strikeRate": "151.31",
+    "average": "19.16",
+    "player": "Mohammad Nabi",
+    "four": 8,
+    "six": 7
+  },
+  {
+    "strikeRate": "79.16",
+    "average": "19",
+    "player": "Prayas Ray Barman",
+    "four": 2,
+    "six": 0
+  },
+  {
+    "strikeRate": "108.82",
+    "average": "18.5",
+    "player": "Rinku Singh",
+    "four": 1,
+    "six": 2
+  },
+  {
+    "strikeRate": "119.48",
+    "average": "18.4",
+    "player": "Colin Ingram",
+    "four": 20,
+    "six": 5
+  },
+  {
+    "strikeRate": "125",
+    "average": "18.33",
+    "player": "Axar Patel",
+    "four": 10,
+    "six": 3
+  },
+  {
+    "strikeRate": "123.28",
+    "average": "18",
+    "player": "Shimron Hetmyer",
+    "four": 4,
+    "six": 7
+  },
+  {
+    "strikeRate": "95.85",
+    "average": "18",
+    "player": "Kedar Jadhav",
+    "four": 19,
+    "six": 3
+  },
+  {
+    "strikeRate": "166.27",
+    "average": "17.87",
+    "player": "Sunil Narine",
+    "four": 17,
+    "six": 9
+  },
+  {
+    "strikeRate": "162.26",
+    "average": "17.2",
+    "player": "Wriddhiman Saha",
+    "four": 13,
+    "six": 1
+  },
+  {
+    "strikeRate": "101",
+    "average": "16.83",
+    "player": "Ishan Kishan",
+    "four": 8,
+    "six": 4
+  },
+  {
+    "strikeRate": "122",
+    "average": "16.63",
+    "player": "Krunal Pandya",
+    "four": 18,
+    "six": 5
+  },
+  {
+    "strikeRate": "92.3",
+    "average": "16",
+    "player": "Evin Lewis",
+    "four": 4,
+    "six": 2
+  },
+  {
+    "strikeRate": "94.11",
+    "average": "16",
+    "player": "Simran Singh",
+    "four": 1,
+    "six": 1
+  },
+  {
+    "strikeRate": "121.21",
+    "average": "16",
+    "player": "Dwayne Bravo",
+    "four": 6,
+    "six": 3
+  },
+  {
+    "strikeRate": "136.95",
+    "average": "15.75",
+    "player": "Shreyas Gopal",
+    "four": 8,
+    "six": 1
+  },
+  {
+    "strikeRate": "93.87",
+    "average": "15.33",
+    "player": "Colin de Grandhomme",
+    "four": 4,
+    "six": 2
+  },
+  {
+    "strikeRate": "115.38",
+    "average": "15",
+    "player": "Siddhesh Lad",
+    "four": 1,
+    "six": 1
+  },
+  {
+    "strikeRate": "135.18",
+    "average": "14.6",
+    "player": "Sherfane Rutherford",
+    "four": 2,
+    "six": 7
+  },
+  {
+    "strikeRate": "113.51",
+    "average": "14",
+    "player": "Piyush Chawla",
+    "four": 4,
+    "six": 2
+  },
+  {
+    "strikeRate": "121.21",
+    "average": "13.33",
+    "player": "Shivam Dube",
+    "four": 1,
+    "six": 3
+  },
+  {
+    "strikeRate": "88.88",
+    "average": "13.33",
+    "player": "Yusuf Pathan",
+    "four": 1,
+    "six": 1
+  },
+  {
+    "strikeRate": "100",
+    "average": "12.5",
+    "player": "Umesh Yadav",
+    "four": 3,
+    "six": 1
+  },
+  {
+    "strikeRate": "107.01",
+    "average": "12.2",
+    "player": "Akshdeep Nath",
+    "four": 5,
+    "six": 2
+  },
+  {
+    "strikeRate": "101.58",
+    "average": "10.66",
+    "player": "Deepak Hooda",
+    "four": 5,
+    "six": 1
+  },
+  {
+    "strikeRate": "87.5",
+    "average": "10.5",
+    "player": "Amit Mishra",
+    "four": 2,
+    "six": 0
+  },
+  {
+    "strikeRate": "333.33",
+    "average": "-",
+    "player": "Ishant Sharma",
+    "four": 1,
+    "six": 1
+  },
+  {
+    "strikeRate": "100",
+    "average": "-",
+    "player": "Tim Southee",
+    "four": 0,
+    "six": 0
+  },
+  {
+    "strikeRate": "115.38",
+    "average": "-",
+    "player": "Alzarri Joseph",
+    "four": 2,
+    "six": 0
+  },
+  {
+    "strikeRate": "166.66",
+    "average": "-",
+    "player": "Harpreet Brar",
+    "four": 2,
+    "six": 1
+  }
+]
