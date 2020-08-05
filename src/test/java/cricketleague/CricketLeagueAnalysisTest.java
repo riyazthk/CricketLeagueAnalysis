@@ -26,4 +26,16 @@ public class CricketLeagueAnalysisTest {
         IplRunAnalysesData[] censusCSV = new Gson().fromJson(sortedStateCodeData, IplRunAnalysesData[].class);
         Assert.assertEquals("Ishant Sharma", censusCSV[0].player);
     }
+
+    @Test
+    public void givenCricketLeagueAnalysisReturnsMaximumSixAndFour() throws CensusAnalyserException, IOException {
+        CricketLeagueAnalysis cricketLeagueAnalysis = new CricketLeagueAnalysis();
+        int records = cricketLeagueAnalysis.loadCricketAnalysisData(IPL_CRICKETLEAGUE_ANALYSIS);
+        String sortedStateCodeData = cricketLeagueAnalysis.getSixAndFourWiseSorted();
+        IplRunAnalysesData[] analyseSixCSV = new Gson().fromJson(sortedStateCodeData, IplRunAnalysesData[].class);
+        String sortedFourData = cricketLeagueAnalysis.getSixAndFourWiseSorted();
+        IplRunAnalysesData[] analyseFourCSV = new Gson().fromJson(sortedFourData, IplRunAnalysesData[].class);
+        Assert.assertEquals("Andre Russell", analyseSixCSV[0].player);
+        Assert.assertEquals("Shikhar Dhawan", analyseFourCSV[0].player);
+    }
 }
