@@ -107,4 +107,41 @@ public class CricketLeagueAnalysis<player> {
         }
         return player;
     }
+
+//    public String findBestAveragRate(IplRunAnalysesData[] censusCSV) {
+//        for (int arrayIndex = 0; arrayIndex < analyseList.size(); arrayIndex++) {
+//            double maxBoundary = censusCSV[arrayIndex].four + censusCSV[arrayIndex].six;
+//            double strikeRate = censusCSV[arrayIndex].strikeRate;
+//            double result = strikeRate / maxBoundary;
+//            if (result > max && maxBoundary > max2) {
+//                max = result;
+//                max2 = maxBoundary;
+//                player = censusCSV[arrayIndex].player;
+//            }
+//        }
+//        return player;
+//    }
+
+    public String getBestAverageRateWiseSorted() throws CensusAnalyserException {
+        double max = 0;
+        double max2 = 0;
+        String player = null;
+        if (analyseList.size() == 0 || analyseList == null) {
+            throw new CensusAnalyserException("No Census Data", CensusAnalyserException.NO_CENSUS_DATA);
+        }
+        Iterator<IplRunAnalysesData> iterator = analyseList.iterator();
+        while (iterator.hasNext()) {
+            IplRunAnalysesData iplRunAnalysesData = iterator.next();
+            double average = iplRunAnalysesData.battingAvg;
+            double result = iplRunAnalysesData.strikeRate / iplRunAnalysesData.battingAvg;
+            if (result > max && average > max2) {
+                max = result;
+                max2 = average;
+                player = iplRunAnalysesData.player;
+            }
+        }
+        return player;
+
+
+    }
 }
