@@ -12,9 +12,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-public class CricketLeagueAnalysis {
+public class CricketLeagueAnalysis<player> {
     List<IplRunAnalysesData> analyseList = new ArrayList<>();
-    boolean flag = true;
 
 
     public int loadCricketAnalysisData(String IplFilePath) throws CensusAnalyserException {
@@ -77,15 +76,35 @@ public class CricketLeagueAnalysis {
         if (analyseList.size() == 0 || analyseList == null) {
             throw new CensusAnalyserException("No Census Data", CensusAnalyserException.NO_CENSUS_DATA);
         }
-        if (flag == true) {
-            iplMostRunsComparator = Comparator.comparing(census -> census.six);
-            flag = false;
-        } else {
-            iplMostRunsComparator = Comparator.comparing(census -> census.four);
-        }
-        this.sort(iplMostRunsComparator);
         String sortedCensusJson = new Gson().toJson(analyseList);
         return sortedCensusJson;
     }
-}
 
+    public String getBestStrikeRateWiseSorted() throws CensusAnalyserException {
+        Comparator<IplRunAnalysesData> iplMostRunsComparator;
+        if (analyseList.size() == 0 || analyseList == null) {
+            throw new CensusAnalyserException("No Census Data", CensusAnalyserException.NO_CENSUS_DATA);
+        }
+        String sortedCensusJson = new Gson().toJson(analyseList);
+        return sortedCensusJson;
+    }
+
+
+    public String findBestAverageAndStrinkeRate(IplRunAnalysesData[] censusCSV) {
+        double max = 0;
+        double max2 = 0;
+        String player = null;
+        for (int arrayIndex = 0; arrayIndex < analyseList.size(); arrayIndex++) {
+            double maxBoundary = censusCSV[arrayIndex].four + censusCSV[arrayIndex].six;
+            double strikeRate = censusCSV[arrayIndex].strikeRate;
+            double result = strikeRate / maxBoundary;
+
+            if (result > max && maxBoundary > max2) {
+                max = result;
+                max2 = maxBoundary;
+                player = censusCSV[arrayIndex].player;
+            }
+        }
+        return player;
+    }
+}

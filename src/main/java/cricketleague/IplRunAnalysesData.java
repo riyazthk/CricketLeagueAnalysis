@@ -8,7 +8,7 @@ public class IplRunAnalysesData {
     public String player;
 
     @CsvBindByName(column = "Avg", required = true)
-    public String battingAvg;
+    public double battingAvg;
 
     @CsvBindByName(column = "SR", required = true)
     public double strikeRate;
@@ -19,6 +19,18 @@ public class IplRunAnalysesData {
 
     @CsvBindByName(column = "6s", required = true)
     public int six;
+
+    public double getBattingAvg() {
+        return battingAvg;
+    }
+
+    public int getFour() {
+        return four;
+    }
+
+    public int getSix() {
+        return six;
+    }
 
     @Override
     public String toString() {
