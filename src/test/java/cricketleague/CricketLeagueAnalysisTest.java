@@ -15,7 +15,7 @@ public class CricketLeagueAnalysisTest {
         int records = cricketLeagueAnalysis.loadCricketAnalysisData(IPL_CRICKETLEAGUE_ANALYSIS);
         String sortedStateCodeData = cricketLeagueAnalysis.getAverageWiseSorted();
         IplRunAnalysesData[] censusCSV = new Gson().fromJson(sortedStateCodeData, IplRunAnalysesData[].class);
-        Assert.assertEquals("Ms Dhoni", censusCSV[0].player);
+        Assert.assertEquals("MS Dhoni", censusCSV[0].player);
     }
 
     @Test
@@ -31,11 +31,19 @@ public class CricketLeagueAnalysisTest {
     public void givenCricketLeagueAnalysisReturnsMaximumSixAndFour() throws CensusAnalyserException, IOException {
         CricketLeagueAnalysis cricketLeagueAnalysis = new CricketLeagueAnalysis();
         int records = cricketLeagueAnalysis.loadCricketAnalysisData(IPL_CRICKETLEAGUE_ANALYSIS);
-        String sortedStateCodeData = cricketLeagueAnalysis.getSixAndFourWiseSorted();
-        IplRunAnalysesData[] analyseSixCSV = new Gson().fromJson(sortedStateCodeData, IplRunAnalysesData[].class);
-        String sortedFourData = cricketLeagueAnalysis.getSixAndFourWiseSorted();
-        IplRunAnalysesData[] analyseFourCSV = new Gson().fromJson(sortedFourData, IplRunAnalysesData[].class);
-        Assert.assertEquals("Andre Russell", analyseSixCSV[0].player);
-        Assert.assertEquals("Shikhar Dhawan", analyseFourCSV[0].player);
+        String cricketLeagueData = cricketLeagueAnalysis.getSixAndFourWiseSorted();
+        IplRunAnalysesData[] analyseSixFourCSV = new Gson().fromJson(cricketLeagueData, IplRunAnalysesData[].class);
+        String player = cricketLeagueAnalysis.findBestAverageAndStrinkeRate(analyseSixFourCSV);
+        Assert.assertEquals("Andre Russell", player);
+    }
+
+    @Test
+    public void givenCricketLeagueAnalysisReturnsBestStrikeRate() throws CensusAnalyserException, IOException {
+        CricketLeagueAnalysis cricketLeagueAnalysis = new CricketLeagueAnalysis();
+        int records = cricketLeagueAnalysis.loadCricketAnalysisData(IPL_CRICKETLEAGUE_ANALYSIS);
+        String sortedStateCodeData = cricketLeagueAnalysis.getBestStrikeRateWiseSorted();
+        IplRunAnalysesData[] censusCSV = new Gson().fromJson(sortedStateCodeData, IplRunAnalysesData[].class);
+        String player = cricketLeagueAnalysis.findBestAverageAndStrinkeRate(censusCSV);
+        Assert.assertEquals("Andre Russell", player);
     }
 }
