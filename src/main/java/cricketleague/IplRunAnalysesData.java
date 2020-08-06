@@ -20,26 +20,18 @@ public class IplRunAnalysesData {
     @CsvBindByName(column = "6s", required = true)
     public int six;
 
-    public double getBattingAvg() {
-        return battingAvg;
-    }
-
-    public int getFour() {
-        return four;
-    }
-
-    public int getSix() {
-        return six;
-    }
+    @CsvBindByName(column = "Runs", required = true)
+    public int Runs;
 
     @Override
     public String toString() {
         return "IplRunAnalysesData{" +
                 "player='" + player + '\'' +
-                ", battingAvg='" + battingAvg + '\'' +
-                ", strikeRate='" + strikeRate + '\'' +
+                ", battingAvg=" + battingAvg +
+                ", strikeRate=" + strikeRate +
                 ", four=" + four +
                 ", six=" + six +
+                ", Runs=" + Runs +
                 '}';
     }
 }

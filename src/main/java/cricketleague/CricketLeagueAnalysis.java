@@ -1,40 +1,15 @@
 package cricketleague;
 
-import com.csvbuilderexception.CSVBuilderException;
 import com.google.gson.Gson;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Reader;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 public class CricketLeagueAnalysis<player> {
     List<IplRunAnalysesData> analyseList = new ArrayList<>();
 
-
     public int loadCricketAnalysisData(String IplFilePath) throws CensusAnalyserException {
-        CSVBuildFactory csvBuilder = new CSVBuildFactory();
-        try (Reader reader = Files.newBufferedReader(Paths.get(IplFilePath));) {
-            Iterator<IplRunAnalysesData> censusIterator = csvBuilder.getCSVFileIterator(reader, IplRunAnalysesData.class);
-            Iterable<IplRunAnalysesData> csvIterable = () -> censusIterator;
-            if (IplRunAnalysesData.class.getName().equals("cricketleague.IplRunAnalysesData")) {
-                StreamSupport.stream(csvIterable.spliterator(), false)
-                        .forEach(runAnalysis -> analyseList.add((IplRunAnalysesData) runAnalysis));
-                return analyseList.size();
-            }
-        } catch (CSVBuilderException e) {
-            throw new CensusAnalyserException(e.getMessage(),
-                    CensusAnalyserException.ExceptionType.
-                            CENSUS_FILE_PROBLEM);
-        } catch (IOException e) {
-            throw new CensusAnalyserException(e.getMessage(),
-                    CensusAnalyserException.ExceptionType.
-                            CENSUS_FILE_PROBLEM);
-        }
+        analyseList= new CricketAnalysisLoader().loadCricketAnalysis(IplFilePath, IplRunAnalysesData.class);
         return analyseList.size();
     }
 
@@ -72,55 +47,47 @@ public class CricketLeagueAnalysis<player> {
     }
 
     public String getSixAndFourWiseSorted() throws CensusAnalyserException {
-        Comparator<IplRunAnalysesData> iplMostRunsComparator;
-        if (analyseList.size() == 0 || analyseList == null) {
-            throw new CensusAnalyserException("No Census Data", CensusAnalyserException.NO_CENSUS_DATA);
-        }
-        String sortedCensusJson = new Gson().toJson(analyseList);
-        return sortedCensusJson;
-    }
-
-    public String getBestStrikeRateWiseSorted() throws CensusAnalyserException {
-        Comparator<IplRunAnalysesData> iplMostRunsComparator;
-        if (analyseList.size() == 0 || analyseList == null) {
-            throw new CensusAnalyserException("No Census Data", CensusAnalyserException.NO_CENSUS_DATA);
-        }
-        String sortedCensusJson = new Gson().toJson(analyseList);
-        return sortedCensusJson;
-    }
-
-
-    public String findBestAverageAndStrinkeRate(IplRunAnalysesData[] censusCSV) {
-        double max = 0;
-        double max2 = 0;
         String player = null;
-        for (int arrayIndex = 0; arrayIndex < analyseList.size(); arrayIndex++) {
-            double maxBoundary = censusCSV[arrayIndex].four + censusCSV[arrayIndex].six;
-            double strikeRate = censusCSV[arrayIndex].strikeRate;
-            double result = strikeRate / maxBoundary;
-
-            if (result > max && maxBoundary > max2) {
-                max = result;
-                max2 = maxBoundary;
-                player = censusCSV[arrayIndex].player;
+        double maxValue = 0.0;
+        if (analyseList.size() == 0 || analyseList == null) {
+            throw new CensusAnalyserException("No Census Data", CensusAnalyserException.NO_CENSUS_DATA);
+        }
+        Iterator<IplRunAnalysesData> iterator = analyseList.iterator();
+        while (iterator.hasNext()) {
+            IplRunAnalysesData iplRunAnalysesData = iterator.next();
+            double maxBoundary = iplRunAnalysesData.four + iplRunAnalysesData.six;
+            if (maxBoundary > maxValue) {
+                maxValue = maxBoundary;
+                player = iplRunAnalysesData.player;
             }
         }
         return player;
     }
 
-//    public String findBestAveragRate(IplRunAnalysesData[] censusCSV) {
-//        for (int arrayIndex = 0; arrayIndex < analyseList.size(); arrayIndex++) {
-//            double maxBoundary = censusCSV[arrayIndex].four + censusCSV[arrayIndex].six;
-//            double strikeRate = censusCSV[arrayIndex].strikeRate;
-//            double result = strikeRate / maxBoundary;
-//            if (result > max && maxBoundary > max2) {
-//                max = result;
-//                max2 = maxBoundary;
-//                player = censusCSV[arrayIndex].player;
-//            }
-//        }
-//        return player;
-//    }
+    public String getBestStrikeRateWiseSorted() throws CensusAnalyserException {
+        double bestStrikeRate = 0;
+        double maxSixFour = 0;
+        String player = null;
+
+        if (analyseList.size() == 0 || analyseList == null) {
+            throw new CensusAnalyserException("No Census Data", CensusAnalyserException.NO_CENSUS_DATA);
+        }
+        Iterator<IplRunAnalysesData> iterator = analyseList.iterator();
+        while (iterator.hasNext()) {
+            IplRunAnalysesData iplRunAnalysesData = iterator.next();
+            double maxBoundary = iplRunAnalysesData.four + iplRunAnalysesData.six;
+            double strikeRate = iplRunAnalysesData.strikeRate;
+            double result = strikeRate / maxBoundary;
+
+            if (result > bestStrikeRate && maxBoundary > maxSixFour) {
+                bestStrikeRate = result;
+                maxSixFour = maxBoundary;
+                player = iplRunAnalysesData.player;
+            }
+        }
+        return player;
+    }
+
 
     public String getBestAverageRateWiseSorted() throws CensusAnalyserException {
         double max = 0;
@@ -137,6 +104,29 @@ public class CricketLeagueAnalysis<player> {
             if (result > max && average > max2) {
                 max = result;
                 max2 = average;
+                player = iplRunAnalysesData.player;
+            }
+        }
+        return player;
+
+
+    }
+
+    public String getMaxRunWiseWiseSorted() throws CensusAnalyserException {
+        double max = 0;
+        double maxRun = 0;
+        String player = null;
+        if (analyseList.size() == 0 || analyseList == null) {
+            throw new CensusAnalyserException("No Census Data", CensusAnalyserException.NO_CENSUS_DATA);
+        }
+        Iterator<IplRunAnalysesData> iterator = analyseList.iterator();
+        while (iterator.hasNext()) {
+            IplRunAnalysesData iplRunAnalysesData = iterator.next();
+            double average = iplRunAnalysesData.Runs;
+            double result = iplRunAnalysesData.Runs / iplRunAnalysesData.battingAvg;
+            if (result > max && average > maxRun) {
+                max = result;
+                maxRun = average;
                 player = iplRunAnalysesData.player;
             }
         }
