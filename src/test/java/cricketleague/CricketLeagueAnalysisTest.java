@@ -41,9 +41,16 @@ public class CricketLeagueAnalysisTest {
     public void givenCricketLeagueAnalysisReturnsBestStrikeRate() throws CensusAnalyserException, IOException {
         CricketLeagueAnalysis cricketLeagueAnalysis = new CricketLeagueAnalysis();
         int records = cricketLeagueAnalysis.loadCricketAnalysisData(IPL_CRICKETLEAGUE_ANALYSIS);
-        String sortedStateCodeData = cricketLeagueAnalysis.getBestStrikeRateWiseSorted();
-        IplRunAnalysesData[] censusCSV = new Gson().fromJson(sortedStateCodeData, IplRunAnalysesData[].class);
+        String cricketLeagueData = cricketLeagueAnalysis.getBestStrikeRateWiseSorted();
+        IplRunAnalysesData[] censusCSV = new Gson().fromJson(cricketLeagueData, IplRunAnalysesData[].class);
         String player = cricketLeagueAnalysis.findBestAverageAndStrinkeRate(censusCSV);
         Assert.assertEquals("Andre Russell", player);
+    }
+    @Test
+    public void givenCricketLeagueAnalysisReturnsBestAverage() throws CensusAnalyserException, IOException {
+        CricketLeagueAnalysis cricketLeagueAnalysis = new CricketLeagueAnalysis();
+        int records = cricketLeagueAnalysis.loadCricketAnalysisData(IPL_CRICKETLEAGUE_ANALYSIS);
+        String player = cricketLeagueAnalysis.getBestAverageRateWiseSorted();
+        Assert.assertEquals("David Warner ", player);
     }
 }
