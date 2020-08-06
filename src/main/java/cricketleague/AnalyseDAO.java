@@ -2,7 +2,7 @@ package cricketleague;
 
 public class AnalyseDAO {
     public double strikeRate;
-    public String average;
+    public double average;
     public String player;
     public int four;
     public int six;
