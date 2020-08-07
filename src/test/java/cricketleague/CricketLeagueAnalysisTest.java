@@ -4,15 +4,16 @@ import com.google.gson.Gson;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.io.IOException;
 
 public class CricketLeagueAnalysisTest {
-    private static final String IPL_CRICKETLEAGUE_ANALYSIS = "./src/test/resources/MostRuns.csv";
+    private static final String IPL_CRICKETLEAGUE_RUNANALYSIS = "./src/test/resources/MostRuns.csv";
+    private static final String IPL_CRICKETLEAGUE_BOWLINGANALYSIS = "./src/test/resources/MostWkts.csv";
+
 
     @Test
     public void givenCricketLeagueAnalysisReturnsTopBattingAverage() throws CensusAnalyserException {
         CricketLeagueAnalysis cricketLeagueAnalysis = new CricketLeagueAnalysis();
-        cricketLeagueAnalysis.loadCricketAnalysisData(IPL_CRICKETLEAGUE_ANALYSIS);
+        cricketLeagueAnalysis.loadCricketRunAnalysisData(IPL_CRICKETLEAGUE_RUNANALYSIS);
         String sortedStateCodeData = cricketLeagueAnalysis.getAverageWiseSorted();
         IplRunAnalysesData[] censusCSV = new Gson().fromJson(sortedStateCodeData, IplRunAnalysesData[].class);
         Assert.assertEquals("MS Dhoni", censusCSV[0].player);
@@ -21,7 +22,7 @@ public class CricketLeagueAnalysisTest {
     @Test
     public void givenCricketLeagueAnalysisReturnsStrikeRate() throws CensusAnalyserException {
         CricketLeagueAnalysis cricketLeagueAnalysis = new CricketLeagueAnalysis();
-        int records = cricketLeagueAnalysis.loadCricketAnalysisData(IPL_CRICKETLEAGUE_ANALYSIS);
+        cricketLeagueAnalysis.loadCricketRunAnalysisData(IPL_CRICKETLEAGUE_RUNANALYSIS);
         String sortedStateCodeData = cricketLeagueAnalysis.getStrikeRateWiseSorted();
         IplRunAnalysesData[] censusCSV = new Gson().fromJson(sortedStateCodeData, IplRunAnalysesData[].class);
         Assert.assertEquals("Ishant Sharma", censusCSV[0].player);
@@ -30,7 +31,7 @@ public class CricketLeagueAnalysisTest {
     @Test
     public void givenCricketLeagueAnalysisReturnsMaximumSixAndFour() throws CensusAnalyserException {
         CricketLeagueAnalysis cricketLeagueAnalysis = new CricketLeagueAnalysis();
-        int records = cricketLeagueAnalysis.loadCricketAnalysisData(IPL_CRICKETLEAGUE_ANALYSIS);
+        cricketLeagueAnalysis.loadCricketRunAnalysisData(IPL_CRICKETLEAGUE_RUNANALYSIS);
         String player = cricketLeagueAnalysis.getSixAndFourWiseSorted();
         Assert.assertEquals("Andre Russell", player);
     }
@@ -38,24 +39,33 @@ public class CricketLeagueAnalysisTest {
     @Test
     public void givenCricketLeagueAnalysisReturnsBestStrikeRate() throws CensusAnalyserException {
         CricketLeagueAnalysis cricketLeagueAnalysis = new CricketLeagueAnalysis();
-        int records = cricketLeagueAnalysis.loadCricketAnalysisData(IPL_CRICKETLEAGUE_ANALYSIS);
+        cricketLeagueAnalysis.loadCricketRunAnalysisData(IPL_CRICKETLEAGUE_RUNANALYSIS);
         String player = cricketLeagueAnalysis.getBestStrikeRateWiseSorted();
-        Assert.assertEquals("Andre Russell", player);
+        Assert.assertEquals("Sunil Narine", player);
     }
 
     @Test
     public void givenCricketLeagueAnalysisReturnsBestAverage() throws CensusAnalyserException {
         CricketLeagueAnalysis cricketLeagueAnalysis = new CricketLeagueAnalysis();
-        int records = cricketLeagueAnalysis.loadCricketAnalysisData(IPL_CRICKETLEAGUE_ANALYSIS);
+        cricketLeagueAnalysis.loadCricketRunAnalysisData(IPL_CRICKETLEAGUE_RUNANALYSIS);
         String player = cricketLeagueAnalysis.getBestAverageRateWiseSorted();
-        Assert.assertEquals("David Warner ", player);
+        Assert.assertEquals("Andre Russell", player);
     }
 
     @Test
     public void givenCricketLeagueAnalysisReturnsMaxRun() throws CensusAnalyserException {
         CricketLeagueAnalysis cricketLeagueAnalysis = new CricketLeagueAnalysis();
-        int records = cricketLeagueAnalysis.loadCricketAnalysisData(IPL_CRICKETLEAGUE_ANALYSIS);
+        cricketLeagueAnalysis.loadCricketRunAnalysisData(IPL_CRICKETLEAGUE_RUNANALYSIS);
         String player = cricketLeagueAnalysis.getMaxRunWiseWiseSorted();
         Assert.assertEquals("David Warner ", player);
+    }
+
+    @Test
+    public void givenCricketLeagueAnalysisReturnsMaxAverageWkt() throws CensusAnalyserException {
+        CricketLeagueAnalysis cricketLeagueAnalysis = new CricketLeagueAnalysis();
+        cricketLeagueAnalysis.loadCricketWicketAnalysisData(IPL_CRICKETLEAGUE_BOWLINGANALYSIS);
+        String player = cricketLeagueAnalysis.getAverageWiseSorted();
+        IplRunAnalysesData[] censusCSV = new Gson().fromJson(player, IplRunAnalysesData[].class);
+        Assert.assertEquals("Krishnappa Gowtham", censusCSV[0].player);
     }
 }
