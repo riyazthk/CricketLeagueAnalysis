@@ -111,4 +111,13 @@ public class CricketLeagueAnalysisTest {
         Assert.assertEquals("Umesh Yadav", player);
     }
 
+    @Test
+    public void givenCricketLeagueAnalysisReturnsBestBatBowlAvg() throws CensusAnalyserException {
+        CricketLeagueAnalysis cricketLeagueAnalysis = new CricketLeagueAnalysis();
+        String flag="true";
+        cricketLeagueAnalysis.loadCricketRunAnalysisData(IPL_CRICKETLEAGUE_RUNANALYSIS,IPL_CRICKETLEAGUE_BOWLINGANALYSIS,flag);
+        String player = cricketLeagueAnalysis.getBestBatBowlAvgWiseSorted();
+        Assert.assertEquals("Marcus Stoinis", player);
+    }
+
 }

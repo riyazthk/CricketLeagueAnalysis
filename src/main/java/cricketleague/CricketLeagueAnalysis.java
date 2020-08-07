@@ -159,4 +159,26 @@ public class CricketLeagueAnalysis<player> {
     }
 
 
+    public String getBestBatBowlAvgWiseSorted() throws CensusAnalyserException {
+        double maxBatAvg = 0;
+        double maxBowlAvg = 0;
+        String player = null;
+        if (analyseMap.size() == 0 || analyseMap == null) {
+            throw new CensusAnalyserException("No Census Data", CensusAnalyserException.NO_CENSUS_DATA);
+        }
+        List<AnalyseDAO> analyseDAO = analyseMap.values().stream().collect(Collectors.toList());
+        Iterator iterator = analyseDAO.iterator();
+        while (iterator.hasNext()) {
+            AnalyseDAO iplRunAnalysesData = (AnalyseDAO) iterator.next();
+            double bowlAverage = iplRunAnalysesData.bowlAverage;
+            double batAverage = iplRunAnalysesData.average;
+            if (batAverage > maxBatAvg && bowlAverage > maxBowlAvg) {
+                maxBatAvg = batAverage;
+                maxBowlAvg = bowlAverage;
+                player = iplRunAnalysesData.player;
+            }
+        }
+        return player;
+
+    }
 }
