@@ -37,7 +37,7 @@ public class CricketLeagueAnalysisTest {
     }
 
     @Test
-    public void givenCricketLeagueAnalysisReturnsBestStrikeRate() throws CensusAnalyserException {
+    public void givenCricketLeagueAnalysisReturnsBestRunStrikeRate() throws CensusAnalyserException {
         CricketLeagueAnalysis cricketLeagueAnalysis = new CricketLeagueAnalysis();
         cricketLeagueAnalysis.loadCricketRunAnalysisData(IPL_CRICKETLEAGUE_RUNANALYSIS);
         String player = cricketLeagueAnalysis.getBestStrikeRateWiseSorted();
@@ -85,5 +85,13 @@ public class CricketLeagueAnalysisTest {
         String player = cricketLeagueAnalysis.getEconomyWiseSorted();
         IplWktAnalyseData[] censusCSV = new Gson().fromJson(player, IplWktAnalyseData[].class);
         Assert.assertEquals("Ben Cutting", censusCSV[0].player);
+    }
+
+    @Test
+    public void givenCricketLeagueAnalysisReturnsBestBowlStrikeRate() throws CensusAnalyserException {
+        CricketLeagueAnalysis cricketLeagueAnalysis = new CricketLeagueAnalysis();
+        cricketLeagueAnalysis.loadCricketWicketAnalysisData(IPL_CRICKETLEAGUE_BOWLINGANALYSIS);
+        String player = cricketLeagueAnalysis.getBestStrikeRateWiseSorted();
+        Assert.assertEquals("Lasith Malinga", player);
     }
 }
