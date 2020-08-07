@@ -134,7 +134,7 @@ public class CricketLeagueAnalysis<player> {
 
     }
 
-    public String getMaxRunWiseWiseSorted() throws CensusAnalyserException {
+    public String getMaxWiseWiseSorted() throws CensusAnalyserException {
         double max = 0;
         double maxRun = 0;
         String player = null;
@@ -145,9 +145,11 @@ public class CricketLeagueAnalysis<player> {
         Iterator iterator = analyseDAO.iterator();
         while (iterator.hasNext()) {
             AnalyseDAO iplRunAnalysesData = (AnalyseDAO) iterator.next();
-            double Runs = iplRunAnalysesData.Runs;
-            if (Runs > maxRun) {
+            double Runs = iplRunAnalysesData.maxRunsOrWkts;
+            double Average = iplRunAnalysesData.average;
+            if (Runs > maxRun && Average > max) {
                 maxRun = Runs;
+                max = Average;
                 player = iplRunAnalysesData.player;
             }
         }

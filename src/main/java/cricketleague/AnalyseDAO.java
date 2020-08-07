@@ -1,6 +1,7 @@
 package cricketleague;
 
 public class AnalyseDAO {
+    public int maxRunsOrWkts;
     public int Runs;
     public double economy;
     public double strikeRate;
@@ -16,7 +17,7 @@ public class AnalyseDAO {
         player = iplRunAnalysesData.player;
         maxBoundaryRunOrWkt = iplRunAnalysesData.six;
         strikeRate = iplRunAnalysesData.strikeRate;
-        Runs=iplRunAnalysesData.Runs;
+        maxRunsOrWkts=iplRunAnalysesData.Runs;
 
     }
 
@@ -28,5 +29,6 @@ public class AnalyseDAO {
         maxBoundaryRunOrWkt=iplWktAnalyseData.fiveWkt;
         strikeRate=iplWktAnalyseData.strikeRate;
         economy=iplWktAnalyseData.economy;
+        maxRunsOrWkts=iplWktAnalyseData.wickets;
     }
 }

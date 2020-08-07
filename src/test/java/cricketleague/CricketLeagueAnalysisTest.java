@@ -56,7 +56,7 @@ public class CricketLeagueAnalysisTest {
     public void givenCricketLeagueAnalysisReturnsMaxRun() throws CensusAnalyserException {
         CricketLeagueAnalysis cricketLeagueAnalysis = new CricketLeagueAnalysis();
         cricketLeagueAnalysis.loadCricketRunAnalysisData(IPL_CRICKETLEAGUE_RUNANALYSIS);
-        String player = cricketLeagueAnalysis.getMaxRunWiseWiseSorted();
+        String player = cricketLeagueAnalysis.getMaxWiseWiseSorted();
         Assert.assertEquals("David Warner ", player);
     }
 
@@ -102,4 +102,13 @@ public class CricketLeagueAnalysisTest {
         String player = cricketLeagueAnalysis.getBestAverageRateWiseSorted();
         Assert.assertEquals("Krishnappa Gowtham", player);
     }
+
+    @Test
+    public void givenCricketLeagueAnalysisReturnsBestMaxWkts() throws CensusAnalyserException {
+        CricketLeagueAnalysis cricketLeagueAnalysis = new CricketLeagueAnalysis();
+        cricketLeagueAnalysis.loadCricketWicketAnalysisData(IPL_CRICKETLEAGUE_BOWLINGANALYSIS);
+        String player = cricketLeagueAnalysis.getMaxWiseWiseSorted();
+        Assert.assertEquals("Umesh Yadav", player);
+    }
+
 }
