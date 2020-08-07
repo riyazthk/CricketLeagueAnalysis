@@ -181,4 +181,51 @@ public class CricketLeagueAnalysis<player> {
         return player;
 
     }
+
+    public String getMaxRunAndWktWiseSorted() throws CensusAnalyserException {
+        double maxRun = 0;
+        double maxWkt = 0;
+        String player = null;
+        if (analyseMap.size() == 0 || analyseMap == null) {
+            throw new CensusAnalyserException("No Census Data", CensusAnalyserException.NO_CENSUS_DATA);
+        }
+        List<AnalyseDAO> analyseDAO = analyseMap.values().stream().collect(Collectors.toList());
+        Iterator iterator = analyseDAO.iterator();
+        while (iterator.hasNext()) {
+            AnalyseDAO iplRunAnalysesData = (AnalyseDAO) iterator.next();
+            double maxRuns = iplRunAnalysesData.maxRunsOrWkts;
+            double maxWkts = iplRunAnalysesData.mostWickets;
+            if (maxRuns > maxRun && maxWkts > maxWkt) {
+                maxRun = maxRuns;
+                maxWkt = maxWkts;
+                player = iplRunAnalysesData.player;
+            }
+        }
+        return player;
+
+    }
+
+    public String getMaxHundredWiseSorted() throws CensusAnalyserException {
+        double maxHun = 0;
+        double maxavg = 0;
+        String player = null;
+        if (analyseMap.size() == 0 || analyseMap == null) {
+            throw new CensusAnalyserException("No Census Data", CensusAnalyserException.NO_CENSUS_DATA);
+        }
+        List<AnalyseDAO> analyseDAO = analyseMap.values().stream().collect(Collectors.toList());
+        Iterator iterator = analyseDAO.iterator();
+        while (iterator.hasNext()) {
+            AnalyseDAO iplRunAnalysesData = (AnalyseDAO) iterator.next();
+            double maxHundred = iplRunAnalysesData.hundred;
+            double maxAvg = iplRunAnalysesData.average;
+            if (maxHundred > maxHun && maxAvg > maxavg) {
+                maxHun = maxHundred;
+                maxavg = maxAvg;
+                player = iplRunAnalysesData.player;
+            }
+        }
+        return player;
+
+    }
 }
+

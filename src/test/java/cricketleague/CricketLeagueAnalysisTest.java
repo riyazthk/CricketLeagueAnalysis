@@ -114,10 +114,27 @@ public class CricketLeagueAnalysisTest {
     @Test
     public void givenCricketLeagueAnalysisReturnsBestBatBowlAvg() throws CensusAnalyserException {
         CricketLeagueAnalysis cricketLeagueAnalysis = new CricketLeagueAnalysis();
-        String flag="true";
-        cricketLeagueAnalysis.loadCricketRunAnalysisData(IPL_CRICKETLEAGUE_RUNANALYSIS,IPL_CRICKETLEAGUE_BOWLINGANALYSIS,flag);
+        String flag = "true";
+        cricketLeagueAnalysis.loadCricketRunAnalysisData(IPL_CRICKETLEAGUE_RUNANALYSIS, IPL_CRICKETLEAGUE_BOWLINGANALYSIS, flag);
         String player = cricketLeagueAnalysis.getBestBatBowlAvgWiseSorted();
         Assert.assertEquals("Marcus Stoinis", player);
     }
 
+    @Test
+    public void givenCricketLeagueAnalysisReturnsMaxRunAndWkt() throws CensusAnalyserException {
+        CricketLeagueAnalysis cricketLeagueAnalysis = new CricketLeagueAnalysis();
+        String flag = "false";
+         cricketLeagueAnalysis.loadCricketRunAnalysisData(IPL_CRICKETLEAGUE_RUNANALYSIS, IPL_CRICKETLEAGUE_BOWLINGANALYSIS, flag);
+        String player = cricketLeagueAnalysis.getMaxRunAndWktWiseSorted();
+        Assert.assertEquals("Hardik Pandya", player);
+    }
+
+    @Test
+    public void givenCricketLeagueAnalysisReturnsMaxHundred() throws CensusAnalyserException {
+        CricketLeagueAnalysis cricketLeagueAnalysis = new CricketLeagueAnalysis();
+        String flag = "false";
+        cricketLeagueAnalysis.loadCricketRunAnalysisData(IPL_CRICKETLEAGUE_RUNANALYSIS);
+        String player = cricketLeagueAnalysis.getMaxHundredWiseSorted();
+        Assert.assertEquals("David Warner", player);
+    }
 }

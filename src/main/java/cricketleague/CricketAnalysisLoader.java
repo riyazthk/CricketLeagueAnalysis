@@ -52,7 +52,7 @@ public class CricketAnalysisLoader<E> {
                         .map(IplWktAnalyseData.class::cast)
                         .filter(wktCSV -> analyseMap.get(wktCSV.player) != null)
                         .forEach(wktCSV -> analyseMap.get(wktCSV.player).bowlAverage = wktCSV.Avg);
-            } else if (flag.equals(false)) {
+            } else if (flag.equals("false")) {
                 StreamSupport.stream(csvIterable.spliterator(), false)
                         .map(IplWktAnalyseData.class::cast)
                         .filter(wktCSV -> analyseMap.get(wktCSV.player) != null)
