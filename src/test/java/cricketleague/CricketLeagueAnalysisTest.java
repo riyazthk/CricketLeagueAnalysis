@@ -65,7 +65,16 @@ public class CricketLeagueAnalysisTest {
         CricketLeagueAnalysis cricketLeagueAnalysis = new CricketLeagueAnalysis();
         cricketLeagueAnalysis.loadCricketWicketAnalysisData(IPL_CRICKETLEAGUE_BOWLINGANALYSIS);
         String player = cricketLeagueAnalysis.getAverageWiseSorted();
-        IplRunAnalysesData[] censusCSV = new Gson().fromJson(player, IplRunAnalysesData[].class);
+        IplWktAnalyseData[] censusCSV = new Gson().fromJson(player, IplWktAnalyseData[].class);
+        Assert.assertEquals("Krishnappa Gowtham", censusCSV[0].player);
+    }
+
+    @Test
+    public void givenCricketLeagueAnalysisReturnsMaxStrikeRateWkt() throws CensusAnalyserException {
+        CricketLeagueAnalysis cricketLeagueAnalysis = new CricketLeagueAnalysis();
+        cricketLeagueAnalysis.loadCricketWicketAnalysisData(IPL_CRICKETLEAGUE_BOWLINGANALYSIS);
+        String player = cricketLeagueAnalysis.getStrikeRateWiseSorted();
+        IplWktAnalyseData[] censusCSV = new Gson().fromJson(player, IplWktAnalyseData[].class);
         Assert.assertEquals("Krishnappa Gowtham", censusCSV[0].player);
     }
 }
