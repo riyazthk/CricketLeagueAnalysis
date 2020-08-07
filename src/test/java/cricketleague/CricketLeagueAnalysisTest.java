@@ -94,4 +94,12 @@ public class CricketLeagueAnalysisTest {
         String player = cricketLeagueAnalysis.getBestStrikeRateWiseSorted();
         Assert.assertEquals("Lasith Malinga", player);
     }
+
+    @Test
+    public void givenCricketLeagueAnalysisReturnsBestBowlAverage() throws CensusAnalyserException {
+        CricketLeagueAnalysis cricketLeagueAnalysis = new CricketLeagueAnalysis();
+        cricketLeagueAnalysis.loadCricketWicketAnalysisData(IPL_CRICKETLEAGUE_BOWLINGANALYSIS);
+        String player = cricketLeagueAnalysis.getBestAverageRateWiseSorted();
+        Assert.assertEquals("Krishnappa Gowtham", player);
+    }
 }
