@@ -77,4 +77,13 @@ public class CricketLeagueAnalysisTest {
         IplWktAnalyseData[] censusCSV = new Gson().fromJson(player, IplWktAnalyseData[].class);
         Assert.assertEquals("Krishnappa Gowtham", censusCSV[0].player);
     }
+
+    @Test
+    public void givenCricketLeagueAnalysisReturnsMaxEconomy() throws CensusAnalyserException {
+        CricketLeagueAnalysis cricketLeagueAnalysis = new CricketLeagueAnalysis();
+        cricketLeagueAnalysis.loadCricketWicketAnalysisData(IPL_CRICKETLEAGUE_BOWLINGANALYSIS);
+        String player = cricketLeagueAnalysis.getEconomyWiseSorted();
+        IplWktAnalyseData[] censusCSV = new Gson().fromJson(player, IplWktAnalyseData[].class);
+        Assert.assertEquals("Ben Cutting", censusCSV[0].player);
+    }
 }
