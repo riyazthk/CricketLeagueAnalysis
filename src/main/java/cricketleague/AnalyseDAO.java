@@ -1,6 +1,7 @@
 package cricketleague;
 
 public class AnalyseDAO {
+    public int fifties;
     public int hundred;
     public int mostWickets;
     public double bowlAverage;
@@ -22,6 +23,7 @@ public class AnalyseDAO {
         strikeRate = iplRunAnalysesData.strikeRate;
         maxRunsOrWkts=iplRunAnalysesData.Runs;
         hundred=iplRunAnalysesData.hundred;
+        fifties=iplRunAnalysesData.fifties;
 
     }
 

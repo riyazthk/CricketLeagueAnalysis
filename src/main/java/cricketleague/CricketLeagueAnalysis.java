@@ -6,16 +6,25 @@ import com.google.gson.Gson;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class CricketLeagueAnalysis<player> {
+public class CricketLeagueAnalysis {
+    private final AnalysisLoader analysisLoader;
     HashMap<String, AnalyseDAO> analyseMap = new HashMap<>();
 
-    public int loadCricketRunAnalysisData(String... IplFilePath) throws CensusAnalyserException {
-        analyseMap = new CricketAnalysisLoader().loadCricketAnalysis(IplFilePath, IplRunAnalysesData.class);
+    public CricketLeagueAnalysis(AnalysisLoader analysisLoader) {
+        this.analysisLoader = analysisLoader;
+    }
+
+    public int query(String iplFilePath) throws CensusAnalyserException {
+        return this.analysisLoader.loadCricketAnalysis(iplFilePath);
+    }
+
+    public int loadCricketRunAnalysisData(String... iplFilePath) throws CensusAnalyserException {
+        analyseMap = new CricketAnalysisLoader().loadCricketAnalysis(iplFilePath, IplRunAnalysesData.class);
         return analyseMap.size();
     }
 
-    public int loadCricketWicketAnalysisData(String... IplFilePath) throws CensusAnalyserException {
-        analyseMap = new CricketAnalysisLoader().loadCricketAnalysis(IplFilePath, IplWktAnalyseData.class);
+    public int loadCricketWicketAnalysisData(String... iplFilePath) throws CensusAnalyserException {
+        analyseMap = new CricketAnalysisLoader().loadCricketAnalysis(iplFilePath, IplWktAnalyseData.class);
         return analyseMap.size();
     }
 
@@ -227,5 +236,29 @@ public class CricketLeagueAnalysis<player> {
         return player;
 
     }
+
+    public String getNoFiftyAndHunderdWiseSorted() throws CensusAnalyserException {
+        double maxavg = 0;
+        String player = null;
+        if (analyseMap.size() == 0 || analyseMap == null) {
+            throw new CensusAnalyserException("No Census Data", CensusAnalyserException.NO_CENSUS_DATA);
+        }
+        List<AnalyseDAO> analyseDAO = analyseMap.values().stream().collect(Collectors.toList());
+        Iterator iterator = analyseDAO.iterator();
+        while (iterator.hasNext()) {
+            AnalyseDAO iplRunAnalysesData = (AnalyseDAO) iterator.next();
+            double maxHundred = iplRunAnalysesData.hundred;
+            double fifty = iplRunAnalysesData.fifties;
+            double maxAvg = iplRunAnalysesData.average;
+            if (maxHundred == 0 && maxAvg > maxavg && fifty == 0) {
+                maxavg = maxAvg;
+                player = iplRunAnalysesData.player;
+            }
+        }
+        return player;
+
+    }
+
+
 }
 

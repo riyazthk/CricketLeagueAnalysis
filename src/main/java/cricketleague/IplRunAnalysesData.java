@@ -26,6 +26,9 @@ public class IplRunAnalysesData {
     @CsvBindByName(column = "100", required = true)
     public int hundred;
 
+    @CsvBindByName(column = "50", required = true)
+    public int fifties;
+
     @Override
     public String toString() {
         return "IplRunAnalysesData{" +
