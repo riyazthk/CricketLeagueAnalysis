@@ -29,6 +29,14 @@ public class IplRunAnalysesData {
     @CsvBindByName(column = "50", required = true)
     public int fifties;
 
+    public IplRunAnalysesData(String player, double battingAvg, double strikeRate) {
+        this.player=player;
+        this.battingAvg=battingAvg;
+        this.strikeRate=strikeRate;
+    }
+ public IplRunAnalysesData(){
+
+ }
     @Override
     public String toString() {
         return "IplRunAnalysesData{" +

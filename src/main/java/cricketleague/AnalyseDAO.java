@@ -39,4 +39,10 @@ public class AnalyseDAO {
         bowlAverage=iplWktAnalyseData.Avg;
         mostWickets=iplWktAnalyseData.wickets;
     }
+
+//    public AnalyseDAO(String player, IplRunAnalysesData Batsman) {
+//        this.player=Batsman.player;
+//        this.average=Batsman.battingAvg;
+//        this.strikeRate=Batsman.
+//    }
 }

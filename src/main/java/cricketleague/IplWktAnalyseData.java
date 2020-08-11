@@ -24,6 +24,15 @@ public class IplWktAnalyseData {
     @CsvBindByName(column = "Wkts", required = true)
     public int wickets;
 
+    public IplWktAnalyseData(String player, double avg, double strikeRate) {
+        this.player=player;
+        this.Avg=avg;
+        this.strikeRate=strikeRate;
+    }
+    public IplWktAnalyseData(){
+
+    }
+
     @Override
     public String toString() {
         return "IplWktAnalyseData{" +

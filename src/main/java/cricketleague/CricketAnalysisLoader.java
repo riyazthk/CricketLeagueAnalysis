@@ -13,9 +13,9 @@ import java.util.stream.StreamSupport;
 public class CricketAnalysisLoader<E> {
     HashMap<String, AnalyseDAO> analyseMap = new HashMap<>();
 
-    public HashMap<String, AnalyseDAO> loadCricketAnalysis(String[] IplFilePath, Class cricketAnalysesClass) throws CensusAnalyserException {
+    public HashMap<String, AnalyseDAO> loadCricketAnalysis( Class cricketAnalysesClass,String... iplFilePath) throws CensusAnalyserException {
         CSVBuildFactory csvBuilder = new CSVBuildFactory();
-        try (Reader reader = Files.newBufferedReader(Paths.get(IplFilePath[0]));) {
+        try (Reader reader = Files.newBufferedReader(Paths.get(iplFilePath[0]));) {
             Iterator<E> censusIterator = csvBuilder.getCSVFileIterator(reader, cricketAnalysesClass);
             Iterable<E> csvIterable = () -> censusIterator;
             if (cricketAnalysesClass.getName().equals("cricketleague.IplRunAnalysesData")) {
@@ -28,8 +28,8 @@ public class CricketAnalysisLoader<E> {
                         .forEach(runAnalysis -> analyseMap.put(runAnalysis.player, new AnalyseDAO(runAnalysis)));
                 return analyseMap;
             }
-            if (IplFilePath.length == 1) return analyseMap;
-            this.loadCricketWktAnalsis(IplFilePath[1], IplFilePath[2]);
+            if (iplFilePath.length == 1) return analyseMap;
+            this.loadCricketWktAnalsis(iplFilePath[1], iplFilePath[2]);
         } catch (CSVBuilderException e) {
             throw new CensusAnalyserException(e.getMessage(),
                     CensusAnalyserException.ExceptionType.
@@ -66,6 +66,7 @@ public class CricketAnalysisLoader<E> {
         }
         return analyseMap;
     }
+
 
 }
 

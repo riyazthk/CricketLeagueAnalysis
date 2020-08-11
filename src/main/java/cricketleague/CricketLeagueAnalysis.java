@@ -3,28 +3,26 @@ package cricketleague;
 import com.google.gson.Gson;
 
 
+import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class CricketLeagueAnalysis {
-    private final AnalysisLoader analysisLoader;
+    CricketAnalysisLoader cricketAnalysisLoader;
     HashMap<String, AnalyseDAO> analyseMap = new HashMap<>();
 
-    public CricketLeagueAnalysis(AnalysisLoader analysisLoader) {
-        this.analysisLoader = analysisLoader;
+    public CricketLeagueAnalysis(CricketAnalysisLoader cricketAnalysisLoader) {
+        this.cricketAnalysisLoader = cricketAnalysisLoader;
     }
 
-    public int query(String iplFilePath) throws CensusAnalyserException {
-        return this.analysisLoader.loadCricketAnalysis(iplFilePath);
-    }
 
-    public int loadCricketRunAnalysisData(String... iplFilePath) throws CensusAnalyserException {
-        analyseMap = new CricketAnalysisLoader().loadCricketAnalysis(iplFilePath, IplRunAnalysesData.class);
+    public int loadCricketRunAnalysisData(String... iplFilePath) throws CensusAnalyserException, IOException {
+        analyseMap = cricketAnalysisLoader.loadCricketAnalysis(IplRunAnalysesData.class, iplFilePath);
         return analyseMap.size();
     }
 
-    public int loadCricketWicketAnalysisData(String... iplFilePath) throws CensusAnalyserException {
-        analyseMap = new CricketAnalysisLoader().loadCricketAnalysis(iplFilePath, IplWktAnalyseData.class);
+    public int loadCricketWicketAnalysisData(String... iplFilePath) throws CensusAnalyserException, IOException {
+        analyseMap = cricketAnalysisLoader.loadCricketAnalysis(IplWktAnalyseData.class, iplFilePath);
         return analyseMap.size();
     }
 
@@ -260,5 +258,12 @@ public class CricketLeagueAnalysis {
     }
 
 
+//    public int getCricketAnalysisData(String fiepath) {
+//
+//    }
+//
+//    public int loadRunAnalysisData(String filepath) {
+//        return 0;
+//    }
 }
 
